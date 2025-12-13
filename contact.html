@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us</title>
+
+<style>
+/* ---------- GLOBAL ---------- */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f1f7f5, #d7ece7);
+    color: #03312E;
+}
+
+/* ---------- HEADER ---------- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: #f7f8f4;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-icon {
+    width: 38px;
+    height: 38px;
+    background: #053029;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f6f9f8;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.logo-text {
+    color: #093b33;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+/* Nav Links */
+nav {
+    display: flex;
+}
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #093b33;
+    font-weight: 600;
+    position: relative;
+    padding: 4px 0;
+    
+}
+
+/* Hover underline */
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: #196256;
+    transition: 0.3s;
+}
+nav a:hover::after {
+    width: 100%;
+}
+nav a:hover {
+    color: #1f7567;
+    
+}
+
+/* Mobile menu button */
+.menu-btn {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #093b33;
+}
+
+
+/* ---------- HERO ---------- */
+.hero {
+    background-color: #3f5f54;
+    /* background: url('https://images.unsplash.com/photo-1560264280-19e3c77d5e4d?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat; */
+    height: 35vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    position: relative;
+    font-family: 'Playfair Display', serif;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 50, 30, 0.55);
+    font-family: 'Playfair Display', serif;
+}
+
+.hero h2 {
+    position: relative;
+    font-size: 32px;
+    font-weight: 700;
+    z-index: 2;
+}
+
+/* ---------- CONTENT ---------- */
+.content-area {
+    padding: 60px 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* Contact Info Boxes */
+.contact-box {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.contact-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+}
+.contact-item i {
+    font-size: 24px;
+    color: #0d3b2e;
+    margin-top: 5px;
+}
+.contact-item div p {
+    margin: 2px 0;
+}
+
+/* FORM */
+/* .form-container {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+} */
+
+.form-container {
+    background: #ffffff;
+    padding: 25px;          /* andar ka spacing kam */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    max-width: 700px;       /* container ki width kam */
+    margin: auto;           /* center align */
+}
+
+
+
+
+
+
+.form-container h3 {
+    margin-bottom: 20px;
+    color: #0d3b2e;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+form input, form textarea {
+    width: 90%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+form button {
+    background: #0d3b2e;
+    color: #fff;
+    padding: 12px 22px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #0a2e24;
+}
+
+/* GOOGLE MAP */
+.map-container {
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* FOOTER */
+footer {
+    background: #0d3b2e;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .content-area {
+        padding: 50px 7%;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap;
+        padding: 15px 20px;
+    }
+    nav {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        margin-top: 10px;
+    }
+    nav a {
+        margin: 8px 0;
+    }
+    .menu-btn {
+        display: block;
+    }
+    .hero h2 {
+        font-size: 24px;
+    }
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 20px;
+    }
+}
+
+.contact-item a {
+  text-decoration: none;   /* underline remove */
+  color: #3f5f54;          /* Instagram pink shade */
+  font-weight: 500;        /* thoda bold look */
+}
+
+.contact-item a:hover {
+  color: #061109;          /* hover pe darker shade */
+}
+/* .form-container form input,
+.form-container form select,
+.form-container form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.gender-options {
+  display: flex;
+  gap: 0px;              /* thoda spacing between options 
+  margin-left: 2px;      /* left side shift 
+  margin-bottom: 3px;
+   /*flex-wrap: wrap;       agar screen chhoti ho toh wrap ho jaye 
+}
+
+.gender-options label {
+  margin-right: 1px;     /* label ke baad thoda spacing 
+  font-weight: normal;
+} */
+.intake-wrapper {
+    max-width: 650px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+
+.intake-wrapper h2 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.intake-note {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.intake-form label {
+    display: block;
+    font-weight: 600;
+    margin: 18px 0 6px;
+    color: #444;
+}
+
+.intake-form input,
+.intake-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.two-col {
+    display: flex;
+    gap: 15px;
+}
+
+.intake-form button {
+    margin-top: 25px;
+    padding: 12px;
+    width: 100%;
+    background: #2f5d50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.intake-form button:hover {
+    background: #244a40;
+}
+.gender-label {
+    font-weight: 600;
+    margin-top: 18px;
+    display: block;
+}
+
+.gender-inline {
+    display: flex;
+    gap: 18px;              /* ⭐ nazdeek spacing */
+    margin-top: 6px;
+}
+
+.gender-inline label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+}
+
+/* hide default radio */
+.gender-inline input {
+    display: none;
+}
+
+/* custom circle */
+.gender-inline span {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    margin-right: 6px;
+    display: inline-block;
+    position: relative;
+}
+
+/* filled circle when checked */
+.gender-inline input:checked + span::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #333;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+</style>
+<!-- FONT AWESOME FOR ICONS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">
+        <div class="logo-icon">Ψ</div>
+        <div class="logo-text">TheMentalHealthAccess</div>
+    </div>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="psychology.html">About</a>
+        <a href="counseling.html">Services</a>
+        <a href="social.html">Blogs</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+
+
+
+<!-- HERO -->
+<section class="hero">
+    <h2>Book Your Session</h2>
+</section>
+<div class="intake-wrapper">
+  <h2>Client Intake Form</h2>
+  <p class="intake-note">Please fill in the required information.</p>
+
+  <form class="intake-form">
+
+    <!-- Client Name -->
+    <label>Client’s Name</label>
+    <div class="two-col">
+      <input type="text" placeholder="First Name" required>
+      <input type="text" placeholder="Last Name" required>
+    </div>
+
+    <!-- Date of Birth -->
+    <label>Date of Birth</label>
+    <input type="date" required>
+
+    <!-- Age -->
+    <label>Age</label>
+    <input type="number" placeholder="Age" min="1" max="120" required>
+
+    <!-- Phone & Email -->
+    <div class="two-col">
+      <div>
+        <label>Phone</label>
+        <input type="tel" placeholder="e.g. 03xx xxx xxxx" required>
+      </div>
+
+      <div>
+        <label>Email</label>
+        <input type="email" placeholder="example@email.com" required>
+      </div>
+    </div>
+    <label class="gender-label">Gender:</label>
+<div class="gender-inline">
+  <label>
+    <input type="radio" name="gender" value="Male" required>
+    <span></span> Male
+  </label>
+
+  <label>
+    <input type="radio" name="gender" value="Female">
+    <span></span> Female
+  </label>
+
+  <label>
+    <input type="radio" name="gender" value="Other">
+    <span></span> Other
+  </label>
+</div>
+
+    <!-- Marital Status -->
+    <label>Marital Status</label>
+    <select required>
+      <option value="">Please select</option>
+      <option>Single</option>
+      <option>Married</option>
+      <option>Divorced</option>
+      <option>Widowed</option>
+    </select>
+
+    <!-- Preferred Language -->
+    <label>Preferred Language</label>
+    <select required>
+      <option value="">Please select</option>
+      <option>English</option>
+      <option>Urdu</option>
+      <option>Pashto</option>
+      <option>Other</option>
+    </select>
+
+    <!-- Address -->
+    <label>Address</label>
+    <input type="text" placeholder="Street Address">
+
+    <div class="two-col">
+      <input type="text" placeholder="City">
+      <input type="text" placeholder="Country">
+    </div>
+
+    <!-- Therapy Reason -->
+    <label>
+      What concerns had led you to consider therapy?
+    </label>
+    <textarea rows="5"
+      placeholder="You may share as much or as little as you feel comfortable with."
+      required></textarea>
+
+    <!-- Submit -->
+    <button type="submit">Submit</button>
+
+  </form>
+</div>
+
+<!-- CONTENT -->
+<div class="content-area">
+
+    <!-- CONTACT INFORMATION -->
+    <div class="contact-box">
+
+
+        <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+                <p><strong>Phone:</strong></p>
+                <p>+92 312 0569578</p>
+            </div>
+        </div>
+        
+        <div class="contact-item">
+  <!-- Instagram icon with link -->
+  <a href="https://www.instagram.com/the_mentalhealthaccess_/" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <div>
+    <p><strong>Instagram:</strong></p>
+    <a href="https://www.instagram.com/the_mentalhealthaccess_/" target="_blank">the_mentalhealthaccess</a>
+  </div>
+</div>
+
+
+        <div class="contact-item">
+               <a href="mailto:thementalhealthaccess@outlook.com?subject=Support%20Request&body=Hello%2C%20I%20need%20help">
+  <i class="fa-solid fa-envelope"></i>
+</a>
+           
+            <div>
+                <p><strong>Email:</strong></p>
+                 <a href="mailto:thementalhealthaccess@outlook.com?subject=Support%20Request&body=Hello%2C%20I%20need%20help">thementalhealthaccess@outlook.com</a>
+            </div>
+        </div>
+
+        <div class="contact-item">
+            <i class="fas fa-globe"></i>
+            <div>
+                <p><strong>Website:</strong></p>
+                <p>www.mindheal.com</p>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- FOOTER -->
+<footer>
+    © 2025 TheMentalHealthAccess• All Rights Reserved
+</footer>
+
+<script>
+// Toggle navigation menu on mobile
+function toggleMenu() {
+    const nav = document.getElementById('nav-links');
+    if (nav.style.display === 'flex') {
+        nav.style.display = 'none';
+    } else {
+        nav.style.display = 'flex';
+    }
+}
+
+</script>
+
+</body>
+</html>

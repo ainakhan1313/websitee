@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Psychology | Home</title>
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ---------- GLOBAL ---------- */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color:#f7f8f4;
+    color: #03312E;
+    font-family: 'Playfair Display', serif;
+}
+
+/* ---------- HEADER ---------- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: #f7f8f4;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-icon {
+    width: 38px;
+    height: 38px;
+    background: #053029;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f6f9f8;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.logo-text {
+    color: #093b33;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+/* Nav Links */
+nav {
+    display: flex;
+}
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #093b33;
+    font-weight: 600;
+    position: relative;
+    padding: 4px 0;
+    
+}
+
+/* Hover underline */
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: #196256;
+    transition: 0.3s;
+}
+nav a:hover::after {
+    width: 100%;
+}
+nav a:hover {
+    color: #1f7567;
+    
+}
+
+/* Mobile menu button */
+.menu-btn {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #093b33;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+    text-align: center;
+    padding: 90px 20px;
+    background-color: #3f5f54;
+    
+    color: white;
+}
+
+.hero h1 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+.hero p {
+    font-size: 16px;
+    max-width: 600px;
+    margin: auto;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* ---------- CARDS ---------- */
+.container {
+    padding: 45px 20px;
+    max-width: 800px;
+    margin: auto;
+    
+}
+
+.card {
+    background: #ffffff;
+    padding: 17px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border-left: 6px solid #003d34;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #003d34;
+    color: white;
+    margin-top: 30px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    nav {
+        display: none;
+        flex-direction: column;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    /* Show nav inside header when menu is open */
+    header.menu-open nav {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 15px 0;
+        text-align: center;
+        border-radius: 0 0 14px 14px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        z-index: 998;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+        font-size: 18px;
+        color: #003d34 !important;
+    }
+
+    nav a:hover {
+        color: #006755 !important;
+    }
+
+    nav a::after {
+        background: #006755;
+    }
+}
+.btn {
+    display: inline-block;
+    background-color: #d8ded4; /* dark green */
+    color: #1b0101;
+    padding: 10px 12px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s;
+    font-family: 'Playfair Display', serif;
+}
+
+.btn:hover {
+    color: #f9fbfa;
+    background-color:#aec6b8; /* darker green on hover */
+}
+.creative-footer {
+  background: linear-gradient(135deg, #2f5d50, #1f4037);
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* .footer-brand h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.9;
+} */
+
+.footer-links h4,
+.footer-social h4 {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.footer-links a {
+  display: block;
+  color: #e0f2ec;
+  text-decoration: none;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-social .icons a {
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+}
+.bottom-links a{
+    color: white;
+}
+.icons a{
+    color: white;
+}
+..footer-social .icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+
+  color: #2f5d50;
+  border-radius: 50%;
+  margin-right: 8px;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.footer-social .icons a:hover {
+  color: #c7e6dc;
+}
+.footer-bottom p{
+  font-size: 15px;
+}
+.footer-bottom a{
+  font-size: 15px;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    font-family: 'Playfair Display', serif;
+}
+.modal-overlay h1{
+  font-size: 24px;
+}
+
+/* Modal Box */
+.modal-box {
+    position: relative;            /* ⭐ FIX: anchor for close button */
+    background: #ffffff;
+    width: 90%;
+    max-width: 520px;
+    padding: 35px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+    animation: scaleUp 0.4s ease;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #003d34;
+    z-index: 10;                   /* ⭐ FIX: always on top */
+    user-select: none;
+}
+
+/* Modal animation */
+@keyframes scaleUp {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-box h2 {
+    color: #003d34;
+    margin-bottom: 15px;
+    font-size: 26px;
+}
+
+.modal-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.modal-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-box ul li {
+    margin: 8px 0;
+    font-size: 15px;
+}
+.inline-list {
+  list-style: none;       /* remove bullets */
+  padding: 0;
+  margin: 0 auto;         /* center horizontally */
+  text-align: center; 
+  font-family: 'Playfair Display', serif;      /* align text to left or center as needed */
+}
+
+.inline-list li {
+  display: block;         /* stack items vertically */
+  margin-bottom: 8px; 
+  font-family: 'Playfair Display', serif;    /* spacing between items */
+}
+
+.inline-list li::after {
+  content: "";            /* no separator needed */
+}
+.card a{
+  color: #3f5f54;
+}
+
+
+</style>
+
+<script>
+function openTherapistModal() {
+    document.getElementById("therapist-modal").style.display = "flex";
+}
+
+function closeTherapistModal() {
+    document.getElementById("therapist-modal").style.display = "none";
+}
+</script>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <div class="logo-icon">Ψ</div>
+        <div class="logo-text">TheMentalHealthAccess</div>
+    </div>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="psychology.html">About</a>
+        <a href="counseling.html">Services</a>
+        <a href="social.html">Blogs</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1 class="hh">Welcome To Mental Health Access</h1>
+    <p class="gg">Hi, I'm <strong>Bushra Khan,</strong> Clinical Psycologist providing confidential, evidence-based online therapy for adolescents, 
+    young adults and adults.My mission is to make Mental Health support accessible, affordable, and stigma-free. </p><br>
+    <a href="#" class="btn">Explore Services</a>
+</section>
+
+
+
+<div class="container">
+    <h2 style="color:#003d34; text-align:center;">Select a Specialty</h2>
+
+    <div class="card">
+    <h3>Meet Your Therapist</h3>
+    <p>Professional qualifications & clinical expertise.</p>
+    <a href="javascript:void(0)" onclick="openTherapistModal()">Learn More →</a>
+</div>
+
+
+
+
+<!-- Therapist Modal -->
+<div id="therapist-modal" class="modal-overlay">
+  <div class="modal-box">
+    <span class="close-btn" onclick="closeTherapistModal()">×</span>
+
+    <h2>About Me </h2>
+    <p>
+      Hi, I'm <strong>Bushra Khan</strong> a qualified Clinical Psychologist, I believes in creating a safe and supportive environment where clients can openly 
+      share their emotions thoughts and struggles. &nbsp;I strives to be a compassionate companion on each client's journey of healing and self discovery.
+      Empowering them to grow, find belance and find their inner strength .
+    </p>
+    <h1> <strong>Qualification</strong>:</h1>
+
+    <ul class="inline-list">
+      
+      <li> Masters in Clinical Psychology From University Of Peshawar</li>
+      <li> Post Graduate Diploma in Clinical Psychology From University Of Peshawar</li>
+      <li> Bachelors Studies in Psychcology From University Of Peshawar</li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+    <div class="card">
+        <h3>Counseling</h3>
+        <p>Empower individuals to overcome challenges and build resilience.</p>
+        <a href="counseling.html">Learn More →</a>
+    </div>
+
+    <div class="card">
+        <h3>Social Work</h3>
+        <p>Be the voice of change through compassion and advocacy.</p>
+        <a href="social.html">Learn More →</a>
+    </div>
+</div>
+
+<footer class="creative-footer">
+  <div class="footer-container">
+<!-- 
+    <div class="footer-brand">
+      <h2>TheMentalHealthAccess&nbsp;&nbsp;&nbsp;</h2>
+      <p>Evidence-based mental health support.Confidential, compassionate, and accessible.</p>
+    </div> -->
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">FAQ</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Support</h4>
+      <a href="#">Find a Therapist</a>
+      <a href="#">Online Therapy</a>
+      <a href="#">Contact</a>
+      <a href="#">Careers</a>
+    </div>
+
+<div class="footer-social">
+  <h4>Connect With Us</h4>
+  <div class="icons">
+    <a href="https://www.instagram.com/the_mentalhealthaccess_/" target="_blank">
+  <i class="fab fa-instagram"></i>
+<a href="https://www.linkedin.com/in/thementalhealthaccess-49aa283a0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+   target="_blank">
+  <i class="fab fa-linkedin-in"></i>
+</a>
+
+   <a href="https://wa.me/923120569578?text=Hello%20I%20need%20support" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+   <a href="mailto:thementalhealthaccess@outlook.com?subject=Support%20Request&body=Hello%2C%20I%20need%20help">
+  <i class="fa-solid fa-envelope"></i>
+</a>
+  </div>
+</div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 TheMentalHealthAccess. All rights reserved.</p>
+    <div class="bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
