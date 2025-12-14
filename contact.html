@@ -95,6 +95,54 @@ nav a:hover {
 }
 
 
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    nav {
+        display: none;
+        flex-direction: column;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    /* Show nav inside header when menu is open */
+    header.menu-open nav {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 15px 0;
+        text-align: center;
+        border-radius: 0 0 14px 14px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        z-index: 998;
+    }
+
+
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+        font-size: 18px;
+        color: #003d34 !important;
+    }
+
+    nav a:hover {
+        color: #006755 !important;
+    }
+
+    nav a::after {
+        background: #006755;
+    }
+}
+
+
+
 /* ---------- HERO ---------- */
 .hero {
     background-color: #3f5f54;
@@ -114,7 +162,7 @@ nav a:hover {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 50, 30, 0.55);
+    /* background: rgba(0, 50, 30, 0.55); */
     font-family: 'Playfair Display', serif;
 }
 
@@ -402,6 +450,14 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+@media (max-width: 768px) {
+
+    header.menu-open nav {
+        display: flex;
+    }
+
+}
+
 
 
 
@@ -410,6 +466,12 @@ footer {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+    <script>
+function toggleMenu() {
+    document.querySelector("header").classList.toggle("menu-open");
+}
+</script>
+
 
 <!-- HEADER -->
 <header>
@@ -440,95 +502,89 @@ footer {
   <h2>Client Intake Form</h2>
   <p class="intake-note">Please fill in the required information.</p>
 
-  <form class="intake-form">
+  <form class="intake-form" id="intakeForm">
 
-    <!-- Client Name -->
-    <label>Client’s Name</label>
-    <div class="two-col">
-      <input type="text" placeholder="First Name" required>
-      <input type="text" placeholder="Last Name" required>
+  <label>Client’s Name</label>
+  <div class="two-col">
+    <input type="text" name="firstName" placeholder="First Name" required>
+    <input type="text" name="lastName" placeholder="Last Name" required>
+  </div>
+
+  <label>Date of Birth</label>
+  <input type="date" name="dob" required>
+
+  <label>Age</label>
+  <input type="number" name="age" min="1" max="120" required>
+
+  <div class="two-col">
+    <div>
+      <label>Phone</label>
+      <input type="tel" name="phone" required>
     </div>
 
-    <!-- Date of Birth -->
-    <label>Date of Birth</label>
-    <input type="date" required>
-
-    <!-- Age -->
-    <label>Age</label>
-    <input type="number" placeholder="Age" min="1" max="120" required>
-
-    <!-- Phone & Email -->
-    <div class="two-col">
-      <div>
-        <label>Phone</label>
-        <input type="tel" placeholder="e.g. 03xx xxx xxxx" required>
-      </div>
-
-      <div>
-        <label>Email</label>
-        <input type="email" placeholder="example@email.com" required>
-      </div>
+    <div>
+      <label>Email</label>
+      <input type="email" name="email" required>
     </div>
-    <label class="gender-label">Gender:</label>
-<div class="gender-inline">
-  <label>
-    <input type="radio" name="gender" value="Male" required>
-    <span></span> Male
-  </label>
+  </div>
 
-  <label>
-    <input type="radio" name="gender" value="Female">
-    <span></span> Female
-  </label>
+  <label class="gender-label">Gender:</label>
+  <div class="gender-inline">
+    <label><input type="radio" name="gender" value="Male" required><span></span> Male</label>
+    <label><input type="radio" name="gender" value="Female"><span></span> Female</label>
+    <label><input type="radio" name="gender" value="Other"><span></span> Other</label>
+  </div>
 
-  <label>
-    <input type="radio" name="gender" value="Other">
-    <span></span> Other
-  </label>
-</div>
+  <label>Marital Status</label>
+  <select name="maritalStatus" required>
+    <option value="">Select</option>
+    <option>Single</option>
+    <option>Married</option>
+    <option>Divorced</option>
+    <option>Widowed</option>
+  </select>
 
-    <!-- Marital Status -->
-    <label>Marital Status</label>
-    <select required>
-      <option value="">Please select</option>
-      <option>Single</option>
-      <option>Married</option>
-      <option>Divorced</option>
-      <option>Widowed</option>
-    </select>
+  <label>Preferred Language</label>
+  <select name="language" required>
+    <option value="">Select</option>
+    <option>English</option>
+    <option>Urdu</option>
+    <option>Pashto</option>
+  </select>
+  <!-- 🔹 SESSION DATE & TIME -->
+<label>Preferred Session Date & Time</label>
+<input type="datetime-local" name="sessionDateTime" required>
 
-    <!-- Preferred Language -->
-    <label>Preferred Language</label>
-    <select required>
-      <option value="">Please select</option>
-      <option>English</option>
-      <option>Urdu</option>
-      <option>Pashto</option>
-      <option>Other</option>
-    </select>
+<!-- 🔹 CURRENT STATUS / OCCUPATION -->
+<label>Current Status / Occupation</label>
+<select name="occupation" required>
+  <option value="">Select</option>
+  <option>Student</option>
+  <option>Employed</option>
+  <option>Self-Employed</option>
+  <option>Unemployed</option>
+  <option>Homemaker</option>
+  <option>Other</option>
+</select>
 
-    <!-- Address -->
-    <label>Address</label>
-    <input type="text" placeholder="Street Address">
+<!-- 🔹 EDUCATION -->
+<label>Education Level</label>
+<select name="educationLevel" required>
+  <option value="">Select</option>
+  <option>Primary</option>
+  <option>Secondary</option>
+  <option>Intermediate</option>
+  <option>Bachelor’s</option>
+  <option>Master’s</option>
+  <option>Other</option>
+</select>
 
-    <div class="two-col">
-      <input type="text" placeholder="City">
-      <input type="text" placeholder="Country">
-    </div>
 
-    <!-- Therapy Reason -->
-    <label>
-      What concerns had led you to consider therapy?
-    </label>
-    <textarea rows="5"
-      placeholder="You may share as much or as little as you feel comfortable with."
-      required></textarea>
+  <label>Concern</label>
+  <textarea name="concern" rows="5" required></textarea>
 
-    <!-- Submit -->
-    <button type="submit">Submit</button>
-
-  </form>
-</div>
+  <button type="submit">Submit</button>
+</form></div>
 
 <!-- CONTENT -->
 <div class="content-area">
@@ -583,18 +639,43 @@ footer {
 <footer>
     © 2025 TheMentalHealthAccess• All Rights Reserved
 </footer>
-
 <script>
-// Toggle navigation menu on mobile
-function toggleMenu() {
-    const nav = document.getElementById('nav-links');
-    if (nav.style.display === 'flex') {
-        nav.style.display = 'none';
-    } else {
-        nav.style.display = 'flex';
-    }
-}
+const form = document.getElementById("intakeForm");
 
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const formData = {
+    firstName: form.firstName.value,
+    lastName: form.lastName.value,
+    dob: form.dob.value,
+    age: form.age.value,
+    phone: form.phone.value,
+    email: form.email.value,
+    gender: form.gender.value,
+    maritalStatus: form.maritalStatus.value,
+    language: form.language.value,
+
+    sessionDateTime: form.sessionDateTime.value,   // ✅ ADD
+
+    concern: form.concern.value
+  };
+
+  try {
+    const response = await fetch("http://localhost:3000/submit-form", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData)
+    });
+
+    alert("Form submitted successfully ✅");
+    form.reset();
+
+  } catch (error) {
+    alert("Server not responding ❌");
+    console.error(error);
+  }
+});
 </script>
 
 </body>

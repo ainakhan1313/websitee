@@ -93,6 +93,53 @@ nav a:hover {
 
 
 
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    nav {
+        display: none;
+        flex-direction: column;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    /* Show nav inside header when menu is open */
+    header.menu-open nav {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 15px 0;
+        text-align: center;
+        border-radius: 0 0 14px 14px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        z-index: 998;
+    }
+
+
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+        font-size: 18px;
+        color: #003d34 !important;
+    }
+
+    nav a:hover {
+        color: #006755 !important;
+    }
+
+    nav a::after {
+        background: #006755;
+    }
+}
+
+
+
     .about-hero {
       background-color: #3f5f54;
       color: white;
